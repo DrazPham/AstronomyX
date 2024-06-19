@@ -1,0 +1,230 @@
+/* Main Content */
+.card-body {
+  color: var(--main_color) !important;
+  border: 1px solid var(--main_color);
+  background-color: var(--fside_bgcolor);
+  min-height: 340px;
+  /* Set a minimum height for the card body */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-text {
+  flex: 1;
+  /* Allow the text to expand within the available space */
+  color: var(--main_color_hover);
+  font-size: var(--small_font_size);
+  font-weight: 100;
+}
+
+.card-text h5 {
+  color: var(--main_color) !important;
+  font-size: var(--xlarge_font_size);
+}
+
+/* Cart */
+.button {
+  --width: 100px;
+  --height: 35px;
+  --tooltip-height: 35px;
+  --tooltip-width: 90px;
+  --gap-between-tooltip-to-button: 18px;
+  --button-color: #222;
+  --tooltip-color: #fff;
+  width: var(--width);
+  height: var(--height);
+  background: var(--button-color);
+  position: relative;
+  text-align: center;
+  border-radius: 0.5em;
+  font-family: "Arial";
+  transition: background 0.7s;
+}
+
+.button::before {
+  position: absolute;
+  content: attr(data-tooltip);
+  width: var(--tooltip-width);
+  height: var(--tooltip-height);
+  background-color: #555;
+  font-size: 0.9rem;
+  color: #fff;
+  border-radius: 0.25em;
+  line-height: var(--tooltip-height);
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+  left: calc(50% - var(--tooltip-width) / 2);
+}
+
+.button::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: #555;
+  left: calc(50% - 10px);
+  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+}
+
+.button::after,
+.button::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-wrapper,
+.text,
+.icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+}
+
+.text {
+  top: 0;
+}
+
+.text,
+.icon {
+  transition: top 0.5s;
+}
+
+.icon {
+  color: #fff;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+
+.card__container .col img{
+  height: 40vh;
+}
+.button:hover {
+  background: #222;
+}
+
+.button:hover .text {
+  top: -100%;
+}
+
+.button:hover .icon {
+  top: 0;
+}
+
+.button:hover:before,
+.button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button:hover:after {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+}
+
+.button:hover:before {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+}
+
+
+
+
+
+/* Bookmark */
+.bookmark {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#checkboxInput {
+  display: none;
+}
+
+.svgIcon {
+  height: 30px;
+}
+
+.svgIcon path {
+  fill: rgb(153, 153, 153);
+}
+
+.bookmark::before {
+  content: "\002B";
+  position: absolute;
+  color: rgb(255, 255, 255);
+  font-size: 1.2em;
+  top: 1px;
+}
+
+/* Styles for the checked state of the bookmark */
+.bookmark.checked::before {
+  content: "\2713";
+  font-size: 0.70em;
+  top: 5px;
+}
+
+/* Styles for the SVG icon path when the checkbox is checked */
+.bookmark.checked .svgIcon path {
+  fill: rgb(121, 199, 3);
+}
+
+/* Styles for the puff-out animation when checkbox is checked */
+.bookmark::after {
+  content: "";
+  background-color: rgba(56, 105, 0, 0.342);
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  z-index: -1;
+  transition: transform 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000),
+    filter 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000),
+    opacity 0.5s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  transform: scale(1);
+  filter: blur(0px);
+  opacity: 1;
+}
+
+.bookmark.checked::after {
+  transform: scale(9);
+  filter: blur(1px);
+  opacity: 0;
+}
+
+.checkboxInput {
+  display: none;
+}
+
+
+/* Pagination */
+.nav_pagination {
+  margin-top: var(--normal_font_size);
+}
+
+.pagination {
+  margin-bottom: -2rem;
+}
+
+.page-link {
+  background-color: var(--sside_bgcolor) !important;
+  color: var(--main_color) !important;
+}

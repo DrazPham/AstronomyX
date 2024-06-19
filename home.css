@@ -1,0 +1,48 @@
+/* Feature */
+.feature_header {
+  font-size: var(--large_font_size);
+}
+
+.feature_title {
+  font-size: var(--xlarge_font_size);
+  font-weight: bold;
+}
+
+.feature_date {
+  font-size: var(--xsmall_font_size);
+  color: var(--main_color);
+}
+
+.feature_box {
+  min-height: 580px;
+}
+
+.border__top {
+  border-top: var(--bs-border-width) var(--bs-border-style) #dee2e666 !important
+}
+.border__top:last-child{
+  border-bottom: var(--bs-border-width) var(--bs-border-style) #dee2e666 !important
+}
+
+.feature_boxes img {
+  position: absolute;
+  bottom: 0%;
+}
+
+.icon-link {
+  font-size: var(--xsmall_font_size);
+  text-decoration: none;
+}
+
+/* Content */
+.content_images {
+  width: 100%;
+  object-fit: contain;
+}
+
+figcaption {
+  font-size: var(--xsmall_font_size);
+  font-style: italic;
+  text-align: center;
+}
+
