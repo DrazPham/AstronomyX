@@ -1,0 +1,78 @@
+// IMPORT
+@import "variables";
+@import "extend";
+@import "mixin";
+
+body{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr) ;
+    grid-template-rows: 1fr 10fr 1fr ;
+    height: 100vh;
+    #background{
+        background-color: $main_bgcolor;
+        position: relative;
+        grid-column: 2/12;
+        grid-row: 2;
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        gap: 10px;
+        border-radius: 10px;
+        h1{
+            text-decoration: underline;
+            text-align: center;
+        }
+        #left_info{
+            margin: auto;
+            #img_ava{
+                border-radius: 50%;
+                border: 1px solid white;
+                margin: auto;   
+                display: flex;
+                width: 80%;
+                aspect-ratio: 1/1;
+                background-position: center;
+                background-size: cover;
+            }
+            #image_button{
+                display: flex;
+                margin: auto;
+            }
+            #functions{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 15px;
+            }
+            .bi:hover{
+                cursor: pointer;
+            }
+        }
+        #right_info{
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            #information_section{
+                padding: 10px;
+            }
+            p{
+                font-size: $xlarge_font_size;
+            }
+        }
+    }
+    @media (max-width:1050px) {
+        #background{
+        grid-template-columns: 1fr ;
+            #left_info{
+                display: none;
+            }
+            #right_info{
+                grid-template-columns: 1fr ;
+                #purchase_section{
+                    display: none;
+                }
+            }
+        }
+        #information_section{
+            overflow: hidden;
+        }
+    }
+}

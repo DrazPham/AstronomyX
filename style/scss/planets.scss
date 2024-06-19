@@ -1,0 +1,552 @@
+// IMPORT
+@import "variables";
+@import "extend";
+@import "mixin";
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap');
+
+//SECTION
+#section_btn{
+    @include btn;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: $tside_bgcolor;
+    transform: translateY(-50%);
+    //RESPONSIVE
+    @media (max-width:1000px) {
+        display: none;
+        
+    }
+}
+#navbar-side--container-section{
+    @include flex-center;
+    width: 20vw;
+    background-color: $main_bgcolor; 
+    height: 100vh; 
+    position: absolute;
+    left:0;
+    z-index: 999;
+    display: none;
+    @keyframes slideInSec {
+        from{
+            transform:translateX(-100%);
+        }
+        to{
+            transform: translateX(0);
+        }
+    }
+    @keyframes slideOutSec {
+        from{
+            transform:translateX(0%);
+        }
+        to{
+            transform: translateX(-100%);
+        }
+    }
+    ul{
+        @include list;
+        @include flex-center;
+        align-items: flex-start;
+        gap: 0.8rem;
+        flex-direction: column;
+    }
+    
+}
+#navbar-side-cancel-section{
+    position: absolute;
+    top: 20px;
+    left: 2rem;
+    @include btn;
+    background-color: transparent;
+    color: $main_color;
+    border: none;
+    font-size: 1.5rem;
+    z-index: 9999;
+
+}
+
+.slide-in-sec {
+    animation: slideInSec 2s forwards;
+}
+.slide-out-sec {
+    animation: slideOutSec 2s forwards;
+}
+
+
+:root {
+    --earth-orbit: 25s;
+    --clr-bg: #051628;
+    --clr-sun: #f9e14b;
+    --clr-mercury: #736f66;
+    --clr-venus: #b66e6f;
+    --clr-earth: #22adc2;
+    --clr-mars: #d02746;
+    --clr-jupiter: #f2a566;
+    --clr-saturn: #d5b979;
+    --clr-uranus: #d6fcfd;
+    --clr-neptune: #00749a;
+    --offcanvas_width: 15rem;
+    --earth-tilt: rotate(23.26deg);
+    --earth-day: 23.9;
+    --earth-color: #b3caff;
+    --mars-tilt: rotate(25.26deg);
+    --mars-day: 24.6;
+    --mars-color: #c07158;
+    --jupiter-tilt: rotate(3.1deg);
+    --jupiter-day: 9.9;
+    --jupiter-color: #c9b5a4;
+}
+
+/* Content */
+.content_images {
+    width: 100%;
+    object-fit: contain;
+}
+#canvas_btn {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+p {
+    font-size: var(--large_font_size)  !important;
+}
+
+/* Solar System */
+@keyframes orbit {
+    0% {
+        transform: translateY(-50%) translateX(-50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(-50%) translateX(-50%) rotate(360deg);
+    }
+}
+
+.sizer {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 100vh;
+}
+
+.wrapper {
+    padding-bottom: 65%;
+    position: relative;
+    width: 65%;
+}
+
+.solar-system {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.positioner {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.orbit {
+    border: 1px solid #ffffff40;
+    border-radius: 50%;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-name: orbit;
+    animation-timing-function: linear;
+}
+
+.planet,
+.sun {
+    border-radius: 50%;
+    display: block;
+}
+
+.planet {
+    background-color: currentColor;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.sun {
+    background-color: var(--clr-sun);
+    height: 11.5%;
+    width: 11.5%;
+}
+
+.mercury {
+    height: 19.2%;
+    width: 19.2%;
+    animation-delay: calc(-0.95 * 0.24 * var(--earth-orbit));
+    animation-duration: calc(0.24 * var(--earth-orbit));
+}
+
+.mercury .planet {
+    height: 7.5%;
+    width: 7.5%;
+    background-color: var(--clr-mercury);
+}
+
+.venus {
+    height: 25%;
+    width: 25%;
+    animation-delay: calc(-0.9 * 0.62 * var(--earth-orbit));
+    animation-duration: calc(0.62 * var(--earth-orbit));
+}
+
+.venus .planet {
+    height: 8.5%;
+    width: 8.5%;
+    background-color: var(--clr-venus);
+}
+
+.earth {
+    height: 32.25%;
+    width: 32.25%;
+    animation-delay: calc(-0.1 * var(--earth-orbit));
+    animation-duration: var(--earth-orbit);
+}
+
+.earth .planet {
+    height: 8.9%;
+    width: 8.9%;
+    background-color: var(--clr-earth);
+}
+
+.mars {
+    height: 39.5%;
+    width: 39.5%;
+    animation-delay: calc(-0.95 * 1.88 * var(--earth-orbit));
+    animation-duration: calc(1.88 * var(--earth-orbit));
+}
+
+.mars .planet {
+    height: 5.5%;
+    width: 5.5%;
+    background-color: var(--clr-mars);
+}
+
+.jupiter {
+    height: 52.15%;
+    width: 52.15%;
+    animation-delay: calc(-0.05 * 11.87 * var(--earth-orbit));
+    animation-duration: calc(11.87 * var(--earth-orbit));
+}
+
+.jupiter .planet {
+    height: 13.7%;
+    width: 13.7%;
+    background-color: var(--clr-jupiter);
+}
+
+.saturn {
+    height: 71.4%;
+    width: 71.4%;
+    animation-delay: calc(-0.8 * 29.47 * var(--earth-orbit));
+    animation-duration: calc(29.47 * var(--earth-orbit));
+}
+
+.saturn .planet {
+    height: 8%;
+    width: 8%;
+    background-color: var(--clr-saturn);
+}
+
+.saturn .planet::before {
+    position: absolute;
+    width: 155%;
+    height: 155%;
+    top: 50%;
+    left: 50%;
+    border: 4px solid #706453;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.uranus {
+    height: 88.8%;
+    width: 88.8%;
+    animation-delay: calc(-0.45 * 84.07 * var(--earth-orbit));
+    animation-duration: calc(84.07 * var(--earth-orbit));
+}
+
+.uranus .planet {
+    height: 4%;
+    width: 4%;
+    background-color: var(--clr-uranus);
+}
+
+.uranus .planet::before {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: 50%;
+    left: 50%;
+    border: 1px solid #90b9d1;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.neptune {
+    height: 100%;
+    width: 100%;
+    animation-delay: calc(-0.55 * 164.9 * var(--earth-orbit));
+    animation-duration: calc(164.9 * var(--earth-orbit));
+}
+
+.neptune .planet {
+    height: 3.57%;
+    width: 3.57%;
+    background-color: var(--clr-neptune);
+}
+
+
+/* Slider */
+.slidecontainer {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 3rem;
+}
+
+#myRange {
+    width: 20rem;
+}
+
+#solar_system_title {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Information */
+.card {
+    background-color: var(--sside_bgcolor) !important;
+    color: var(--main_color) !important;
+    
+}
+
+.card-title {
+    font-size: var(--xxlarge_font_size);
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: var(--small_font_size);
+    text-align: justify;
+}
+
+.card-img-top {
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    background-color: black;
+}
+
+
+@keyframes planetRotate {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: -200% center;
+    }
+}
+
+
+/* Planet Orbit Themselves */
+.planet_2_div {
+    height: 50vh;
+    background: var(--fs_bgcolor);
+    color: var(--main_color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 3rem;
+    
+}
+
+.card_2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    --color: var(--earth-color);
+    --tilt: var(--earth-tilt);
+    --day: var(--earth-day);
+}
+
+.earth_2 .surface {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    background-image: url(https://codetheworld.io/wp-content/uploads/2023/12/earth.jpg);
+    background-size: cover;
+    transform: var(--tilt) scale(1.2);
+    animation: planetRotate calc(var(--day)* .1s) linear infinite;
+}
+
+.mars_2 .surface {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    background-image: url(https://codetheworld.io/wp-content/uploads/2023/12/mars.jpg);
+    background-size: cover;
+    transform: var(--tilt) scale(1.2);
+    animation: planetRotate calc(var(--day)* .1s) linear infinite;
+}
+
+.jupiter_2 .surface {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    background-image: url(https://codetheworld.io/wp-content/uploads/2023/12/jupiter.jpg);
+    background-size: cover;
+    transform: var(--tilt) scale(1.2);
+    animation: planetRotate calc(var(--day)* .1s) linear infinite;
+}
+
+.atmosphere {
+    height: 190px;
+    width: 190px;
+    position: relative;
+    background: radial-gradient(circle at 30% 50%, #ffffff4d 0%, #ffffff00 65%);
+    border-radius: 100px;
+    overflow: hidden;
+    box-shadow:
+        inset 10px 0px 12px -2px #ffffff33,
+        inset -70px 0px 50px 0px black,
+        -5px 0px 10px -4px var(--color);
+}
+
+.planet_2::before {
+    content: "";
+    position: absolute;
+    height: 190px;
+    z-index: -2;
+    left: 50%;
+    top: 0%;
+    border-left: 1px dashed var(--color);
+    transform: var(--tilt) scale(1.2);
+}
+
+.title {
+    margin-top: 40px;
+    font-weight: bold;
+    font-size: var(--xxlarge_font_size);
+    font-family: "Major Mono Display", monospace !important;
+    text-transform: lowercase;
+    min-width: 200px;
+    text-align: center;
+}
+.label_2{
+    font-family: "Major Mono Display", monospace !important;
+    text-transform: lowercase;
+}
+.item_2{
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.details{
+    line-height: 5px;
+}
+.line{
+    flex:1;
+    margin: 0 5px;
+    border-bottom: 1px dashed #ffffff4d;
+}
+
+.container{
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: repeat(12,1fr);
+    #solar-container{
+        grid-column: 3/11;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    #planets_container{
+        grid-column: 3/11;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        .card-container{
+            background-color: $sside_bgcolor;
+            border-radius: 5px;
+            div{
+                padding: 1rem;
+            }
+        }
+        img{
+            width: 100%;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        h1{
+            text-align: center;
+        }
+    }
+    #orbit-container{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        grid-column: 3/11;
+        #orbit-planets-container{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        //RESPONSIVE
+        @media (max-width:1000px) {
+            #orbit-planets-container{
+                grid-template-columns: 1fr;
+                height: 100%;
+            }
+            #everyday-info-container{
+                #everyday-container-child{
+                    img,div{
+                        font-size: $normal_font_size;
+                    }
+                }
+            }
+        }
+    }
+    #everyday-info-container{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        grid-column: 3/11;
+        h1{
+            text-align: center;
+        }
+        img{
+            width: 100%;
+        }
+        div{
+            padding: 5px;
+        }
+    }
+}

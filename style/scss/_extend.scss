@@ -1,0 +1,22 @@
+%list{
+    list-style: none;
+}
+%flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+%flex-center-around{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+%search_bar{
+    padding: 3%;
+    outline: none;
+    border-radius: 5px;
+    font-size: $normal_font_size;
+}
+%btn{
+    padding: 5px 10px;
+}

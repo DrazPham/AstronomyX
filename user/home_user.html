@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- STYLE -->
+    <link rel="stylesheet" href="/style/scss/default.css">
+    <link rel="stylesheet" href="/style/scss/home.css">
+    <!-- ** -->
+    <!-- ICON -->
+    <link rel="shortcut icon" href="/assets/imgs/Title_icon.png" type="image/x-icon">
+    <link rel="icon" href="/assets/imgs/Title_icon.png">
+    <!-- ** -->
+    <!-- FONT -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/font/css/all.min.css">
+    <!-- Font: Montserrat -->
+    <!-- ** -->
+    <title>Astronomy X</title>
+</head>
+<body>
+    <!-- MODEL -->
+    <div id = "model-container"></div>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div id="navbar-full">
+            <ul id="navbar-full--list">
+                <li class="navbar-full-item">
+                    <a class="nav-link " href="#">
+                        <img src="/assets/imgs/Title_icon.png" id="navbar-full--logo" alt="icon">
+                    </a>
+                </li>
+                <li class="navbar-full-item" id="navbar-full-off-btn">
+                    <button type="button" id="canvas_btn" onclick="off_canvaOpen()">=</button>
+                    <div id="navbar-side--container">
+                        <button id="navbar-side-cancel" onclick="off_canvaClose()">x</button>
+                        <ul id="navbar-side--list">
+                            <li class="navbar-side-item">
+                                <a class="nav-link " href="#">
+                                    <img src="/assets/imgs/Title_icon.png" id="navbar-side--logo" alt="icon">
+                                </a>
+                            </li>
+                            <li class="navbar-side-item">
+                                <input type="search" placeholder="Search..." aria-label="Search"
+                                    id="navbar-side-search">
+                            </li>
+                            <li class="navbar-side-item"><a class="nav-link"
+                                    href="/user/satellites.html">Satellites</a></li>
+                            <li class="navbar-side-item"><a class="nav-link"
+                                    href="/user/planets.html">Planets</a></li>
+                            <li class="navbar-side-item">
+                                <a class="nav-link" href="/user/shop.html">
+                                    <i class="bi bi-cart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar-full-item">
+                    <input type="search" placeholder="Search..." aria-label="Search" id="navbar-full-search">
+                </li>
+                <li class="navbar-full-item"><a class="nav-link" href="/user/satellites.html">Satellites</a></li>
+                <li class="navbar-full-item"><a class="nav-link" href="/user/planets.html">Planets</a></li>
+                <li class="navbar-full-item">
+                    <a class="nav-link" href="/user/shop.html">
+                        <i class="bi bi-cart"></i>
+                    </a>
+                </li>
+                <li class="navbar-full-item" id="nav-item-ava">
+                    <div class="nav-link" id="nav-item-ava-link">
+                        <style>
+                            #nav-item-ava {
+                                background-image: url(/assets/imgs/user_default_ava.png);
+                            }
+                        </style>
+                        <ul id="user_option_list">
+                            <li class="user_option-item">
+                                <a href="/user/profile.html">Profile</a>
+                            </li>
+                            <li class="user_option-item">
+                                <a href="/index.html">Log out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CAROSUEL -->
+    <section id = "caroseul">
+        <div id = "caroseul-container">
+            <ul id = "caroseul-list">
+                <li class="caroseul-items">
+                    <img src="https://bigthink.com/wp-content/uploads/2023/02/AdobeStock_558949687.jpg" alt="" class="caroseul-image">
+                </li>
+                <li class="caroseul-items">
+                    <img src="https://www.rheagroup.com/wp-content/uploads/2022/04/international-day-of-human-space-flight.jpg" alt="" class="caroseul-image">
+                </li>
+                <li class="caroseul-items">
+                    <img src="https://assets.iflscience.com/assets/articleNo/59739/aImg/35943/1621265502-astronaut-floating-freely-in-space-fer-gregory-shutterstock-com-o.webp" alt="" class="caroseul-image">
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main id = "main">
+        <!-- MAIN POST -->
+        <section id = "main-post">
+            <ul id = "post-container" class = "main-post-items">
+            </ul>
+            <div class = "main-post-items">
+                <div id = "main-post-advertise">
+                    <img src="https://www.cnet.com/a/img/resize/1a01b6b074937ad937e9eb4430bd21fa5bf31957/hub/2019/01/11/21c3dece-7bbb-4fba-8fca-10c894b8b39a/starship.jpg?auto=webp&width=1200" alt="">
+                </div>
+                <div id = "main-post-recent">
+                    <h4>Blogs</h4>
+                    <hr>
+                    <ul id = "blogs-list">
+                    </ul>
+                    <iframe width="100%" src="https://www.youtube.com/embed/AgwSdQzN4H4"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                    <hr>
+                    <h4>Elsewhere</h4>
+                    <ol>
+                        <li><a href="https://github.com/DrazPham" target="_blank"
+                                rel="noopener noreferrer">GitHub</a></li>
+                        <li><a href="https://www.facebook.com/draz.principe" target="_blank"
+                                rel="noopener noreferrer">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/draz.principe/" target="_blank"
+                                rel="noopener noreferrer">Instagram</a></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to Top -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><strong>^</strong></button>
+    <!-- Floating Icon -->
+    <div id="toggle-btn" onclick="toggleMessage()"></div>
+    <div class="message-box" id="messageBox">
+        <div id = "top-part">
+            <img src="/assets/imgs/Title_icon.png" alt="">
+            <button type="button" class="btn-close" onclick="toggleMessage()">X</button>
+        </div>
+        <div id ="bottom_part">
+            <div>
+                <h4 id  ="chat_intro">Chat with us</h4>
+                <div>
+                    <p id="chat_greeting">Hi! How can we help you?</p>
+                </div>
+                <div id="chatbox_chat">
+                    
+                </div>
+            </div>
+            <button id="chat_btn">Start conversation</button>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer id = "footer">
+        <div class = "footer-options">
+            <div class = "footer-items">
+                <img src="/assets/imgs/Icon.png" alt="">
+                <h3>Astronomy X</h3>
+            </div>
+            <div class = "footer-items">
+                <h5>NAVIGATION</h5>
+                <ul>
+                    <div>
+                        <li>
+                            <a href="#">Home</a></li>
+                        <li>
+                            <a href="/user/satellites.html">Satellites</a>
+                        </li>
+                        <li>
+                            <a href="/user/planets.html">Planets</a>
+                        </li>
+                        <li>
+                            <a href="/user/shop.html">Shop</a>
+                        </li>
+                        <li>
+                            <a href="/procedure.html">Procedure</a>
+                        </li>
+                </ul>
+            </div>
+            <div class = "footer-items">
+                <h5>LEGAL</h5>
+                <ul>
+                    <div>
+                        <li>
+                            <a href="#">About Us</a></li>
+                        <li>
+                            <a href="#">Privacy</a>
+                        </li>
+                        <li>
+                            <a href="#">Term of use</a>
+                        </li>
+                        <li>
+                            <a href="#">Support</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact us</a>
+                        </li>
+                </ul>
+            </div>
+            <div class = "footer-items">
+                <form id="myForm">
+                    <h5>Subscribe to receive the earliest updates</h5>
+                    <p>Stay informed with our latest news, offers, and updates.</p>
+                    <input type="text" id = "user_email_input" placeholder="Email address">
+                    <input type="submit" value="Subscribe" id="user_email_submit">
+                </form>
+            </div>
+        </div>
+        <div class = "footer-options">
+            <div class="footer-copyrights">
+                <p>© 2023 Draz. All rights reserved.</p>
+                <p>Copyright of <a href="https://uiverse.io/">Uiverse.io</a></p>
+                <p>Supporters: Mr Nguyen Quang Nam, Mr Nguyen Quoc Dat,<a href="https://stackoverflow.com/">
+                        Stack Overflow</a></p>
+                <p>Influenced by: <a href="https://www.nasa.gov/">NASA</a>, <a
+                        href="https://www.spacex.com/">SpaceX</a>, <a
+                        href="https://www.space.com/">Space</a> </p>
+            </div>
+            <ul class="footer-copyrights">
+                <li>
+                    <a href="https://www.facebook.com/draz.principe">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/draz.principe/">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://discord.gg/nFGY7yVr">
+                        <i class="bi bi-discord"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/DrazPham">
+                        <i class="bi bi-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="/script/default.js"></script>
+    <script src="/script/main.js"></script>
+</body>
+
+</html>

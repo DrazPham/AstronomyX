@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- STYLE -->
+    <link rel="stylesheet" href="/style/scss/default.scss">
+    <link rel="stylesheet" href="/style/scss/procedure.css">
+    <!-- ** -->
+    <!-- ICON -->
+    <link rel="shortcut icon" href="./imgs/Title_icon.png" type="image/x-icon">
+    <link rel="icon" href="./imgs/Title_icon.ico">
+    <!-- ** -->
+    <link rel="stylesheet" href="assets/font/css/all.min.css"> <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Font: Montserrat -->
+    <!-- ** -->
+    <title>AstronomyX - Login/Register</title>
+</head>
+
+<body>
+    <!-- Login form  -->
+    <form class="form" id="form_LogIn">
+        <div class="form-title"><span>JOINING YOUR</span></div>
+        <div class="title-2"><span>SPACE</span></div>
+        <div class="input-container">
+            <input class="input-mail" type="email" placeholder="Enter email" required id="input_login_email">
+        </div>
+        <section class="bg-stars">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+        </section>
+        <div class="input-container input-pwd-container">
+            <input class="input-pwd" type="password" placeholder="Enter password" required id="input_login_pwd">
+            <i class="bi bi-eye" id ="eye_open"></i>
+            <i class="bi bi-eye-slash bi-active" id ="eye_close"></i>
+        </div>
+        <button type="submit" class="submit" id="login_button">
+            <span class="sign-text">Sign in</span>
+        </button>
+    </form>
+    <form class="form" id="form_Register">
+        <div class="form-title"><span>CREATING YOUR</span></div>
+        <div class="title-2"><span>SPACE</span></div>
+        <div class="input-container">
+            <input class="input-mail" id="input_register_email" type="email" placeholder="Enter email" required>
+        </div>
+        <section class="bg-stars">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+        </section>
+        <div class="input-container input-pwd-container">
+            <input class="input-pwd" id="input_register_pwd" type="password" placeholder="Enter password" required>
+            <i class="bi bi-eye" id ="eye_open_register"></i>
+            <i class="bi bi-eye-slash bi-active" id ="eye_close_register"></i>
+        </div>
+        <div id="progress_container">
+            <div id="progress_current_value"></div>
+        </div>
+        <div class="input-container" id = "phone-container">
+            <div id ="flag-container">
+                <div id = "flag_checkbox">
+                    <img src="https://cdn.kcak11.com/CountryFlags/countries/vn.svg" alt="" id = "main_flag" >
+                    <i class="bi bi-caret-down-fill"></i>
+                </div>
+                <ul id = "flags_list">
+                </ul>
+            </div>
+
+            <input class="input-number" type="number" placeholder="Phone number (optional)" id="input_register_number">
+        </div>
+        <button type="submit" class="submit" id="register_button">
+            <span class="sign-text">Sign up</span>
+        </button>
+    </form>
+
+    <script src="/script/procedure.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- STYLE -->
+    <link rel="stylesheet" href="/style/scss/default.css">
+    <link rel="stylesheet" href="/style/scss/planets.css">
+    <!-- ** -->
+    <!-- ICON -->
+    <link rel="shortcut icon" href="/assets/imgs/Title_icon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/imgs/Title_icon.ico">
+    <!-- ** -->
+    <!-- FONT -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Font: Montserrat -->
+    <!-- ** -->
+    <title>Astronomy X - Planets</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- MODEL -->
+    <div id="model-container"></div>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div id="navbar-full">
+            <button type="button" id="section_btn" onclick="sectionOpen()">=</button>
+            <div id="navbar-side--container-section">
+                <button id="navbar-side-cancel-section" onclick="sectionClose()">x</button>
+                <ul id="navbar-side--list">
+                    <h1>SECTION</h1>
+                    <li class="section-item">
+                        <a href="#solar_system_title">Modal</a>
+                    </li>
+                    <li class="section-item">
+                        <a href="#Mercury_info">Mercury</a>
+                    </li>
+                    <li class="section-item">
+                        <a href="#Venus_info">Venus</a>
+                    </li>
+                    <li class="section-item">
+                        <a href="#Earth_info">Earth</a>
+                    </li>
+                    <li class="section-item">
+                        <a href="#Mars_info">Mars</a>
+                    <li class="section-item">
+                        <a href="#Jupiter_info">Jupiter</a>
+                    </li>
+                    <li class="section-item">
+                        <a href="#Saturn_info">Saturn</a>
+                    <li class="section-item">
+                        <a href="#Uranus_info">Uranus</a>
+                    <li class="section-item">
+                        <a href="#Neptune_info">Neptune</a>
+                    </li>
+                    <li class="section-item">
+                        <a href="#orbit-container">Orbit</a>
+                    </li>
+                    <li class="section-item">
+                        <a href="#everyday_new">News</a>
+                    </li>
+                </ul>
+            </div>
+            <ul id="navbar-full--list">
+                <li class="navbar-full-item">
+                    <a class="nav-link " href="/user/home_user.html">
+                        <img src="/assets/imgs/Title_icon.png" id="navbar-full--logo" alt="icon">
+                    </a>
+                </li>
+                <li class="navbar-full-item" id="navbar-full-off-btn">
+                    <button type="button" id="canvas_btn" onclick="off_canvaOpen()">=</button>
+                    <div id="navbar-side--container">
+                        <button id="navbar-side-cancel" onclick="off_canvaClose()">x</button>
+                        <ul id="navbar-side--list">
+                            <li class="navbar-side-item">
+                                <a class="nav-link " href="#">
+                                    <img src="/assets/imgs/Title_icon.png" id="navbar-side--logo" alt="icon">
+                                </a>
+                            </li>
+                            <li class="navbar-side-item">
+                                <input type="search" placeholder="Search..." aria-label="Search"
+                                    id="navbar-side-search">
+                            </li>
+                            <li class="navbar-side-item"><a class="nav-link" href="/user/satellites.html">Satellites</a></li>
+                            <li class="navbar-side-item"><a class="nav-link" href="#">Planets</a></li>
+                            <li class="navbar-side-item">
+                                <a class="nav-link" href="/user/shop.html">
+                                    <i class="bi bi-cart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar-full-item">
+                    <input type="search" placeholder="Search..." aria-label="Search" id="navbar-full-search">
+                </li>
+                <li class="navbar-full-item"><a class="nav-link" href="/user/satellites.html">Satellites</a></li>
+                <li class="navbar-full-item"><a class="nav-link" href="#">Planets</a></li>
+                <li class="navbar-full-item">
+                    <a class="nav-link" href="/user/shop.html">
+                        <i class="bi bi-cart"></i>
+                    </a>
+                </li>
+                <li class="navbar-full-item" id="nav-item-ava">
+                    <div class="nav-link" id="nav-item-ava-link">
+                        <style>
+                            #nav-item-ava {
+                                background-image: url(/assets/imgs/user_default_ava.png);
+                            }
+                        </style>
+                        <ul id="user_option_list">
+                            <li class="user_option-item">
+                                <a href="/user/profile.html">Profile</a>
+                            </li>
+                            <li class="user_option-item">
+                                <a href="/index.html">Log out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CAROSUEL -->
+    <section id="caroseul">
+        <div id="caroseul-container">
+            <ul id="caroseul-list">
+                <li class="caroseul-items">
+                    <img src="https://cdn.mos.cms.futurecdn.net/v5n22xGyNNHLzSnSArbrVH-1200-80.jpg" alt=""
+                        class="caroseul-image">
+                </li>
+                <li class="caroseul-items">
+                    <img src="https://th-thumbnailer.cdn-si-edu.com/fYvl2DtHz91U-teHxzU1zz53mGU=/1000x750/filters:no_upscale():focal(1633x731:1634x732)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/b4/a6/b4a67cc0-c66e-4634-8c59-c5a6c1372aeb/farfarout-illustration-scaled.jpg"
+                        alt="" class="caroseul-image">
+                </li>
+                <li class="caroseul-items">
+                    <img src="https://exoplanets.nasa.gov/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBdlVjIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7c2654b0ac0596fb75b8712477e76a6ef505f84/Kepler10_1600.Jpg?disposition=attachment"
+                        alt="" class="caroseul-image">
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div id="solar-container">
+            <h1 id="solar_system_title"><strong>Solar System Modal</strong></h1>
+            <div class="sizer">
+                <div class="wrapper">
+                    <div class="solar-system">
+                        <div class="positioner sun"></div>
+                        <div class="orbit positioner mercury">
+                            <div class="planet" type="button" class="btn btn-secondary" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-title="Tooltip on right"></div>
+                        </div>
+                        <div class="orbit positioner venus">
+                            <div class="planet"></div>
+                        </div>
+                        <div class="orbit positioner earth">
+                            <div class="planet"></div>
+                        </div>
+                        <div class="orbit positioner mars">
+                            <div class="planet"></div>
+                        </div>
+                        <div class="orbit positioner jupiter">
+                            <div class="planet"></div>
+                        </div>
+                        <div class="orbit positioner saturn">
+                            <div class="planet"></div>
+                        </div>
+                        <div class="orbit positioner uranus">
+                            <div class="planet"></div>
+                        </div>
+                        <div class="orbit positioner neptune">
+                            <div class="planet"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider -->
+            <div class="slidecontainer">
+                <p>Slower</p>
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange" style="direction: rtl;">
+                <p>Faster</p>
+            </div>
+        </div>
+
+        <!-- PLANET INFORMATION -->
+        <div id="planets_container">
+            <h1>PLANETS INFORMATION</h1>
+        </div>
+
+        <div id  ="orbit-container">
+            <h1 style="text-align: center;" id="Orbiting_planets">Planets Orbit Themselves</h1>
+            <div class="planet_2_div" id  ="orbit-planets-container">
+                <article class="card_2 earth_2">
+                    <div class="planet_2">
+                        <div class="atmosphere">
+                            <div class="surface"></div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h2 class="title">Earth</h2>
+                        <div class="form_2">
+                            <div class="item_2">
+                                <label class="label_2">Tilt</label>
+                                <span class="line label_2"></span>
+                                <span class="detail label_2">23.26°</span>
+                            </div>
+                            <div class="item_2">
+                                <label class="label label_2">Day</label>
+                                <span class="line label_2"></span>
+                                <span class="detail label_2">23.9 hours</span>
+                            </div>
+                            <div class="item_2">
+                                <label class="label_2">Year</label>
+                                <span class="line label_2"></span>
+                                <span class="detail label_2">365.2 days</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card_2 mars_2">
+                    <div class="planet_2">
+                        <div class="atmosphere">
+                            <div class="surface"></div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h2 class="title">Mars</h2>
+                        <div class="form_2">
+                            <div class="item_2">
+                                <label class="label_2">Tilt</label>
+                                <span class="line label_2"></span>
+                                <span class="detail label_2">25.2°</span>
+                            </div>
+                            <div class="item_2">
+                                <label class="label_2">Day</label>
+                                <span class="line label_2"></span>
+                                <span class="detail label_2">24.6 hours</span>
+                            </div>
+                            <div class="item_2">
+                                <label class="label_2">Year</label>
+                                <span class="line label_2"></span>
+                                <span class="detail label_2">687 days</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card_2 jupiter_2">
+                    <div class="planet_2">
+                        <div class="atmosphere">
+                            <div class="surface"></div>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h2 class="title">Jupiter</h2>
+                        <div class="form_2">
+                            <div class="item_2">
+                                <label class="label_2">Tilt</label>
+                                <span class="line label_2"></span>
+                                <span class="detail label_2">3.1°</span>
+                            </div>
+                            <div class="item_2">
+                                <label class="label_2">Day</label>
+                                <span class="line label_2"></span>
+                                <span class="detail label_2">9.9 hours</span>
+                            </div>
+                            <div class="item_2">
+                                <label class="label_2">Year</label>
+                                <span class="line label_2"></span>
+                                <span class="detail label_2">4,331 days</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <!-- EVERYDAY INFORMATION -->
+        <div id  ="everyday-info-container">
+            <h1 id="everyday_new">EVERYDAY NEWS</h1>
+            <div id = "everyday-container-child">
+                <img src="" id="planet_image" alt="">
+                <div>
+                    <h2 id="planet_title"></h2>
+                    <p id="planet_explanation"></p>
+                    <small id="planet_author">By an anonymous author</small>
+                    <small id="planet_date"></small>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Back to Top -->
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><strong>^</strong></button>
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-options">
+            <div class="footer-items">
+                <img src="/assets/imgs/Icon.png" alt="">
+                <h3>Astronomy X</h3>
+            </div>
+            <div class="footer-items">
+                <h5>NAVIGATION</h5>
+                <ul>
+                    <div>
+                        <li>
+                            <a href="/user/home_user.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="/user/satellites.html">Satellites</a>
+                        </li>
+                        <li>
+                            <a href="#">Planets</a>
+                        </li>
+                        <li>
+                            <a href="/user/shop.html">Shop</a>
+                        </li>
+                        <li>
+                            <a href="/procedure.html">Procedure</a>
+                        </li>
+                </ul>
+            </div>
+            <div class="footer-items">
+                <h5>LEGAL</h5>
+                <ul>
+                    <div>
+                        <li>
+                            <a href="#">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#">Privacy</a>
+                        </li>
+                        <li>
+                            <a href="#">Term of use</a>
+                        </li>
+                        <li>
+                            <a href="#">Support</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact us</a>
+                        </li>
+                </ul>
+            </div>
+            <div class="footer-items">
+                <form id="myForm">
+                    <h5>Subscribe to receive the earliest updates</h5>
+                    <p>Stay informed with our latest news, offers, and updates.</p>
+                    <input type="text" id="user_email_input" placeholder="Email address">
+                    <input type="submit" value="Subscribe" id="user_email_submit">
+                </form>
+            </div>
+        </div>
+        <div class="footer-options">
+            <div class="footer-copyrights">
+                <p>© 2023 Draz. All rights reserved.</p>
+                <p>Copyright of <a href="https://uiverse.io/">Uiverse.io</a></p>
+                <p>Supporters: Mr Nguyen Quang Nam, Mr Nguyen Quoc Dat,<a href="https://stackoverflow.com/">
+                        Stack Overflow</a></p>
+                <p>Influenced by: <a href="https://www.nasa.gov/">NASA</a>, <a
+                        href="https://www.spacex.com/">SpaceX</a>, <a href="https://www.space.com/">Space</a> </p>
+            </div>
+            <ul class="footer-copyrights">
+                <li>
+                    <a href="https://www.facebook.com/draz.principe">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/draz.principe/">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://discord.gg/nFGY7yVr">
+                        <i class="bi bi-discord"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/DrazPham">
+                        <i class="bi bi-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="/script/default.js"></script>
+    <script src="/script/planet.js"></script>
+</body>
+
+</html>

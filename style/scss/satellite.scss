@@ -1,0 +1,191 @@
+// IMPORT
+@import "variables";
+@import "extend";
+@import "mixin";
+
+
+#main{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+}
+#main-post{
+    display: grid;
+    grid-column: 3/11;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    .main-post-items:first-child{
+        h1{
+            text-align: center;
+        }
+    }
+    .main-post-items:nth-child(2){
+        #main-post-advertise{
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+        #main-post-recent{
+            h4{
+                font-size: $xxlarge_font_size;
+            }
+            ul,ol{
+                @include list;
+            }
+            li, iframe{
+                margin:0.5rem 0;
+            }
+            ol{
+                font-style: italic;
+                text-decoration: underline;
+            }
+            img{
+                width: 100%;
+            }
+        }
+        
+    }
+     // RESPONSIVE
+    @media (max-width: 750px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Main Content */
+.chart_title {
+    font-size: 1.8rem;
+}
+
+/* Satellites Launch */
+.loader {
+    width: 32px;
+    height: 90px;
+    display: block;
+    position: relative;
+    top: 75%;
+    background-color: white;
+    border-bottom: 10px solid red;
+    border-radius: 50% 50% 0 0;
+    background-image: radial-gradient(ellipse at center, white 34%, red 35%, red 54%, white 55%),
+        linear-gradient(red 10px, transparent 0);
+    background-size: 28px 28px;
+    background-position: center 20px, center 2px;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    margin: 20px auto;
+    animation: animloaderBack 6s ease-in alternate;
+    animation-play-state: paused;
+}
+
+.loader::before {
+    content: '';
+    position: absolute;
+    width: 64px;
+    height: 44px;
+    box-shadow: 0px 15px red inset;
+    box-sizing: border-box;
+    top: 67px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+}
+
+.loader::after {
+    content: '';
+    width: 34px;
+    height: 34px;
+    background: radial-gradient(ellipse at center,
+            yellow 8%,
+            red 24%,
+            black 100%);
+    position: absolute;
+    left: 50%;
+    top: 112%;
+    transform: translateX(-50%) rotate(45deg);
+    border-radius: 50% 50% 0;
+    background-repeat: no-repeat;
+    background-position: -44px -44px;
+    background-size: 100px 100px;
+    box-shadow: 4px 4px 12px 0px yellow;
+    box-sizing: border-box;
+    animation: animloader 1s ease-in alternate infinite ;
+    animation-play-state: inherit;
+}
+
+@keyframes animloaderBack {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-70vh);
+    }
+}
+
+@keyframes animloader {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        width: 34px;
+        height: 34px;
+        box-shadow: 4px 4px 12px 2px red;
+        background-position: -44px -44px;
+        background-size: 100px 100px;
+    }
+
+    100% {
+        width: 30px;
+        height: 28px;
+        box-shadow: 2px 2px 8px 0px red;
+        background-position: -36px -36px;
+        background-size: 80px 80px
+    }
+}
+
+
+.space_launch_envi {
+    height: 100vh;
+    background-image: url(https://cdn.pixabay.com/photo/2017/01/30/17/15/background-2021472_1280.png);
+    position: relative;
+    width: 100vw;
+}
+
+.sky {
+    background-image: url(/assets/imgs/Cloud.png);
+    width: 100vw;
+    height: 25rem;
+    background-size: 20rem 25rem;
+    position: absolute;
+    z-index: 99;
+
+}
+
+.space_launch_envi button {
+    position: absolute;
+    bottom: 14%;
+    right: 20%;
+    border-radius: 1rem;
+    border: none;
+    padding: 1rem 3rem;
+    font-weight: bold;
+}
+
+
+.chart_title {
+    text-align: center;
+    font-weight: 700;
+}
+
+.chart_info {
+    font-size: var(--normal_font_size);
+    text-align: justify;
+}
+//RESPONSIVE
+@media (max-width:750px) {
+    #launch-btn{
+        bottom: 0;
+    }
+}

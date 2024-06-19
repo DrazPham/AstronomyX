@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- STYLE -->
+    <link rel="stylesheet" href="/style/scss/default.css">
+    <link rel="stylesheet" href="/style/scss/satellite.css">
+    <!-- ** -->
+    <!-- ICON -->
+    <link rel="shortcut icon" href="/assets/imgs/Title_icon.ico" type="image/x-icon">
+    <link rel="icon" href="/assets/imgs/Title_icon.ico">
+    <!-- ** -->
+    <!-- FONT -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Font: Montserrat -->
+    <title>Astronomy X - Satellites</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+
+<body>
+    <!-- MODEL -->
+    <div id="model-container"></div>
+    <!-- NAVBAR -->
+    <nav id="navbar">
+        <div id="navbar-full">
+            <ul id="navbar-full--list">
+                <li class="navbar-full-item">
+                    <a class="nav-link " href="/user/home_user.html">
+                        <img src="/assets/imgs/Title_icon.png" id="navbar-full--logo" alt="icon">
+                    </a>
+                </li>
+                <li class="navbar-full-item" id="navbar-full-off-btn">
+                    <button type="button" id="canvas_btn" onclick="off_canvaOpen()">=</button>
+                    <div id="navbar-side--container">
+                        <button id="navbar-side-cancel" onclick="off_canvaClose()">x</button>
+                        <ul id="navbar-side--list">
+                            <li class="navbar-side-item">
+                                <a class="nav-link " href="/user/home_user.html">
+                                    <img src="/assets/imgs/Title_icon.png" id="navbar-side--logo" alt="icon">
+                                </a>
+                            </li>
+                            <li class="navbar-side-item">
+                                <input type="search" placeholder="Search..." aria-label="Search"
+                                    id="navbar-side-search">
+                            </li>
+                            <li class="navbar-side-item"><a class="nav-link"
+                                    href="#">Satellites</a></li>
+                            <li class="navbar-side-item"><a class="nav-link"
+                                    href="/user/planets.html">Planets</a></li>
+                            <li class="navbar-side-item">
+                                <a class="nav-link" href="/user/shop.html">
+                                    <i class="bi bi-cart"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="navbar-full-item">
+                    <input type="search" placeholder="Search..." aria-label="Search" id="navbar-full-search">
+                </li>
+                <li class="navbar-full-item"><a class="nav-link" href="#">Satellites</a></li>
+                <li class="navbar-full-item"><a class="nav-link" href="/user/planets.html">Planets</a></li>
+                <li class="navbar-full-item">
+                    <a class="nav-link" href="/user/shop.html">
+                        <i class="bi bi-cart"></i>
+                    </a>
+                </li>
+                <li class="navbar-full-item" id="nav-item-ava">
+                    <div class="nav-link" id="nav-item-ava-link">
+                        <style>
+                            #nav-item-ava {
+                                background-image: url(/assets/imgs/user_default_ava.png);
+                            }
+                        </style>
+                        <ul id="user_option_list">
+                            <li class="user_option-item">
+                                <a href="/user/profile.html">Profile</a>
+                            </li>
+                            <li class="user_option-item">
+                                <a href="/index.html">Log out</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CAROSUEL -->
+    <section id="caroseul">
+        <div id="caroseul-container">
+            <ul id="caroseul-list">
+                <li class="caroseul-items">
+                    <img src="https://www.geospatialworld.net/wp-content/uploads/2022/11/3d-rendering-planet-earth-broadband-internet-system-meet-needs-consumers-scaled.jpg" alt=""
+                        class="caroseul-image">
+                </li>
+                <li class="caroseul-items">
+                    <img src="https://www.lebigdata.fr/wp-content/uploads/2023/08/publithings_seo_a_render_of_Starlink_satellites_0ccde8fc-ec76-4521-8049-1f30f9eb2c16.png"
+                        alt="" class="caroseul-image">
+                </li>
+                <li class="caroseul-items">
+                    <img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/81000/81559/EarthSat_HD_lrg.jpg"
+                        alt="" class="caroseul-image">
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main">
+        <section id = "main-post">
+            <div id = "graph-container" class="main-post-items">
+                <!-- Country Chart -->
+                <h1 class="chart_title">Number of satellites in orbit by major country as of April 30, 2022</h1>
+                <canvas id="Country_Satellites" style="width:100%;max-width:600px"></canvas>
+                <script>
+                    var xValues = ["United States", "China", "Russia", "Rest of the world"];
+                    var yValues = [3433, 541, 172, 1319];
+                    var barColors = ["red", "green", "blue", "orange", "brown"];
+                    new Chart("Country_Satellites", {
+                        type: "horizontalBar",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: false
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        fontColor: "white"
+                                    }
+                                    // ,gridLines:{
+                                    //     display: false,
+                                    // }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        fontColor: "white"
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+                <p class="chart_info">Of the 5,465 active artificial satellites orbiting the Earth as of April 30,
+                    2022, 3,433 belong
+                    to the
+                    United States. This is by far the largest number of any single country, with their nearest
+                    competitor,
+                    China, accounting for only 541.</p>
+                <hr>
+                <!-- Starlink_Chart -->
+                <h1 class="chart_title">Number of Starlink satellites in space</h1>
+                <canvas id="Starlink_Satellites" style="width:100%;max-width:600px"></canvas>
+                <script>
+                    var xValues = ["Sep '19", "Mar '20", "Sep '20", "Mar '21", "Sep '21", "Mar '22"];
+                    var yValues = [67, 365, 677, 1322, 1683, 1919];
+                    var barColors = [
+                        "rgba(174,158,231,0.2)",
+                        "rgba(174,158,231,0.4)",
+                        "rgba(174,158,231,0.5)",
+                        "rgba(174,158,231,0.6)",
+                        "rgba(174,158,231,0.8)",
+                        "rgba(174,158,231,1.0)"
+                    ];
+                    new Chart("Starlink_Satellites", {
+                        type: "bar",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                            }]
+                        },
+                        options: {
+                            legend: { display: false },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true,
+                                        fontColor: "white"
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        fontColor: "white"
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+                <p class="chart_info">SpaceX started launching Starlink satellites in 2019. As of November 2023, it
+                    consists of over
+                    5,500 mass-produced small satellites in low Earth orbit (LEO) that communicate with
+                    designated ground transceivers. Nearly 12,000 satellites are planned to be deployed, with a
+                    possible later extension to 42,000. SpaceX announced reaching more than 1 million subscribers in
+                    December 2022, 1.5 million subscribers in May 2023, and 2 million subscribers in September
+                    2023. It has had a key role in the Russo-Ukrainian War.</p>
+                <hr>
+                <!-- Categories -->
+                <h1 class="chart_title">Satellite Type(%)</h1>
+                <canvas id="Categories_Satellites" style="width:100%;max-width:600px"></canvas> <br>
+                <p class="chart_info">In the vast expanse of space, satellites play a crucial role in our modern
+                    world. These
+                    artificial objects orbiting the Earth have revolutionized communication, navigation, weather
+                    forecasting, and scientific research. While there are numerous types of satellites, we will
+                    focus on the eight main categories that dominate the skies above us.
+                </p>
+                <hr>
+                <script>
+                    var xValues = ["Communication", "Remote Sensing", "Scientific", "Weather Forecasting", "Military Communication", "Military Early Warning", "Military Navigation", "Military Reconnaissance & Surveiliance"];
+                    var yValues = [64, 8, 6, 4, 8, 2, 6, 2];
+                    var barColors = [
+                        "#4472A7",
+                        "#AB4642",
+                        "#89A54E",
+                        "#70588F",
+                        "#4099AF",
+                        "#DB853C",
+                        "#93A9CF",
+                        "#D19393"
+                    ];
+                    new Chart("Categories_Satellites", {
+                        type: "pie",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                    display: true,
+                                    labels: {
+                                        fontColor: "white"
+                                    }
+                                },
+                            }
+                        }
+                    });
+                </script>
+                <!-- Active_Satellites -->
+                <h1 class="chart_title">Number of active satellities in orbit Jan 31 2021</h1>
+                <canvas id="Active_Satellites" style="width:100%;max-width:600px"></canvas> <br>
+                <script>
+                    var xValues = ["Starlink", "Planet Labs", "OneWeb", "Kosmos", "Other"];
+                    var yValues = [1006, 110, 176, 98, 2131];
+                    var barColors = [
+                        "#e81772",
+                        "#4b66eb",
+                        "#4ceb9b",
+                        "#ffad01",
+                        "#c6c7c2"
+                    ];
+                    new Chart("Active_Satellites", {
+                        type: "doughnut",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    fontColor: "white"
+                                }
+                            },
+                        }
+                    });
+                </script>
+                <p class="chart_info">Of the 1,029 smallsats launched in 2020, 773 (75%) are part of Starlink,
+                    SpaceX’s
+                    global
+                    high-speed broadband service. It’s a new approach to satellite internet that relies on a network
+                    of interconnected satellites orbiting at low altitudes, meaning data has less distance to
+                    travel.</p>
+                <hr>
+                <!-- Total Satellites Launched -->
+                <h1 class="chart_title">Total no.of satellites launched</h1>
+                <canvas id="Total" style="width:100%;max-width:600px"></canvas>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0"></script>
+                <script>
+                    var xValues = ["1970-80", "1981-90", "1991-2000", "2001-10", "2011-13"];
+                    new Chart("Total", {
+                        type: "line",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                label: "China",
+                                data: [500, 600, 400, 500, 500],
+                                borderColor: "red",
+                                fill: false
+                            }, {
+                                label: "USA",
+                                data: [500, 400, 500, 200, 200],
+                                borderColor: "blue",
+                                fill: false
+                            }, {
+                                label: "Japan",
+                                data: [300, 300, 400, 600, 500],
+                                borderColor: "purple",
+                                fill: false
+                            }, {
+                                label: "India",
+                                data: [100, 300, 200, 400, 300],
+                                borderColor: "green",
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    ticks: {
+                                        beginAtZero: true,
+                                        color: "white"
+                                    }
+                                },
+                                x: {
+                                    ticks: {
+                                        color: "white"
+                                    }
+                                }
+                            },
+                            legend: {
+                                display: true,
+                                labels: {
+                                    color: "white"
+                                }
+                            }
+                        }
+                    });
+                </script>
+                <p class="chart_info">As you can see from the table, if you choose to add all the numbers up, over
+                    the last 66 years,
+                    15,946 objects have been launched into space</p>
+            </div>
+            <div class = "main-post-items">
+                <div id = "main-post-advertise">
+                    <img src="https://www.cnet.com/a/img/resize/1a01b6b074937ad937e9eb4430bd21fa5bf31957/hub/2019/01/11/21c3dece-7bbb-4fba-8fca-10c894b8b39a/starship.jpg?auto=webp&width=1200" alt="">
+                </div>
+                <div id = "main-post-recent">
+                    <h4>Recent posts</h4>
+                    <hr>
+                    <ul>
+                        <li>
+                            <a href="https://www.space.com/moon-jupiter-dec-22-2023">
+                                <img src="https://cdn.mos.cms.futurecdn.net/QYVV6XJRJNGU5CnALqtXVC-650-80.jpg.webp">
+                                <div>
+                                    <h6>See the moon and Jupiter enjoy their final meet-up of 2023 in the night sky tonight
+                                    </h6>
+                                    <small>Dec 23, 2023</small>
+                                </div>
+                            </a>
+                        </li>
+                        <hr>
+                        <li>
+                            <a href="https://www.space.com/ursid-meteor-shower-dec-2023">
+                                <img src="https://cdn.mos.cms.futurecdn.net/yUJKiKsfagtYT3VfgybJ8d-650-80.jpg.webp"
+                                    alt="">
+                                <div>
+                                    <h6>The Ursids peak tonight, offering the last meteor shower of
+                                        2023 tonight
+                                    </h6>
+                                    <small>Dec 23, 2023</small>
+                                </div>
+                            </a>
+                        </li>
+                        <hr>
+                        <li>
+                            <a href="https://www.space.com/running-chicken-nebula-vlt-photo">
+                                <img src="https://cdn.mos.cms.futurecdn.net/M8SHXsWYcykbq5TzGcP72h-650-80.jpg.webp">
+                                <div>
+                                    <h6>Distant nebula looks like fleeing turkey in festive new
+                                        Very Large Telescope photo
+                                    </h6>
+                                    <small>Dec 22, 2023</small>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <iframe width="100%" src="https://www.youtube.com/embed/AgwSdQzN4H4"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                    <hr>
+                    <h4>Elsewhere</h4>
+                    <ol>
+                        <li><a href="https://github.com/DrazPham" target="_blank"
+                                rel="noopener noreferrer">GitHub</a></li>
+                        <li><a href="https://www.facebook.com/draz.principe" target="_blank"
+                                rel="noopener noreferrer">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/draz.principe/" target="_blank"
+                                rel="noopener noreferrer">Instagram</a></li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <!-- Back to Top -->
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><strong>^</strong></button>
+
+    </main>
+    <!--Launch Spacecraft-->
+    <div class="space_launch_envi">
+        <div class="sky"></div>
+        <!-- <span class="loader"></span> -->
+        <button onclick="startAnimation()" id = "launch-btn">Launch Spacecraft</button>
+    </div>
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-options">
+            <div class="footer-items">
+                <img src="/assets/imgs/Icon.png" alt="">
+                <h3>Astronomy X</h3>
+            </div>
+            <div class="footer-items">
+                <h5>NAVIGATION</h5>
+                <ul>
+                    <div>
+                        <li>
+                            <a href="/user/home_user.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Satellites</a>
+                        </li>
+                        <li>
+                            <a href="/user/planets.html">Planets</a>
+                        </li>
+                        <li>
+                            <a href="/user/shop.html">Shop</a>
+                        </li>
+                        <li>
+                            <a href="/procedure.html">Procedure</a>
+                        </li>
+                </ul>
+            </div>
+            <div class="footer-items">
+                <h5>LEGAL</h5>
+                <ul>
+                    <div>
+                        <li>
+                            <a href="#">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#">Privacy</a>
+                        </li>
+                        <li>
+                            <a href="#">Term of use</a>
+                        </li>
+                        <li>
+                            <a href="#">Support</a>
+                        </li>
+                        <li>
+                            <a href="#">Contact us</a>
+                        </li>
+                </ul>
+            </div>
+            <div class="footer-items">
+                <form id="myForm">
+                    <h5>Subscribe to receive the earliest updates</h5>
+                    <p>Stay informed with our latest news, offers, and updates.</p>
+                    <input type="text" id="user_email_input" placeholder="Email address">
+                    <input type="submit" value="Subscribe" id="user_email_submit">
+                </form>
+            </div>
+        </div>
+        <div class="footer-options">
+            <div class="footer-copyrights">
+                <p>© 2023 Draz. All rights reserved.</p>
+                <p>Copyright of <a href="https://uiverse.io/">Uiverse.io</a></p>
+                <p>Supporters: Mr Nguyen Quang Nam, Mr Nguyen Quoc Dat,<a href="https://stackoverflow.com/">
+                        Stack Overflow</a></p>
+                <p>Influenced by: <a href="https://www.nasa.gov/">NASA</a>, <a
+                        href="https://www.spacex.com/">SpaceX</a>, <a href="https://www.space.com/">Space</a> </p>
+            </div>
+            <ul class="footer-copyrights">
+                <li>
+                    <a href="https://www.facebook.com/Draz.Milanista">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/draz.principe/">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://discord.gg/nFGY7yVr">
+                        <i class="bi bi-discord"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/DrazPham">
+                        <i class="bi bi-github"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="/script/default.js"></script>
+    <script src="/script/satellite.js"></script>
+</body>
+
+</html>

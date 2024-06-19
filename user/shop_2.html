@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- STYLE -->
+  <link rel="stylesheet" href="/style/scss/default.css">
+  <link rel="stylesheet" href="/style/scss/shop.css">
+  <!-- ** -->
+  <!-- ICON -->
+  <link rel="shortcut icon" href="/assets/imgs/Title_icon.png" type="image/x-icon">
+  <link rel="icon" href="/assets/imgs/Title_icon.png">
+  <!-- ** -->
+  <!-- FONT -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/assets/font/css/all.min.css">
+  <!-- Font: Montserrat -->
+  <!-- ** -->
+  <title>Astronomy X</title>
+</head>
+
+<body>
+  <!-- MODEL -->
+  <div id="model-container"></div>
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div id="navbar-full">
+      <ul id="navbar-full--list">
+        <li class="navbar-full-item">
+          <a class="nav-link " href="/user/home_user.html">
+            <img src="/assets/imgs/Title_icon.png" id="navbar-full--logo" alt="icon">
+          </a>
+        </li>
+        <li class="navbar-full-item" id="navbar-full-off-btn">
+          <button type="button" id="canvas_btn" onclick="off_canvaOpen()">=</button>
+          <div id="navbar-side--container">
+            <button id="navbar-side-cancel" onclick="off_canvaClose()">x</button>
+            <ul id="navbar-side--list">
+              <li class="navbar-side-item">
+                <a class="nav-link " href="/user/home_user.html">
+                  <img src="/assets/imgs/Title_icon.png" id="navbar-side--logo" alt="icon">
+                </a>
+              </li>
+              <li class="navbar-side-item">
+                <input type="search" placeholder="Search..." aria-label="Search" id="navbar-side-search">
+              </li>
+              <li class="navbar-side-item"><a class="nav-link" href="/user/satellites.html">Satellites</a>
+              </li>
+              <li class="navbar-side-item"><a class="nav-link" href="/user/planets.html">Planets</a></li>
+              <li class="navbar-side-item">
+                <a class="nav-link" href="#">
+                  <i class="bi bi-cart"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="navbar-full-item">
+          <input type="search" placeholder="Search..." aria-label="Search" id="navbar-full-search">
+        </li>
+        <li class="navbar-full-item"><a class="nav-link" href="/user/satellites.html">Satellites</a></li>
+        <li class="navbar-full-item"><a class="nav-link" href="/user/planets.html">Planets</a></li>
+        <li class="navbar-full-item">
+          <a class="nav-link" href="#">
+            <i class="bi bi-cart"></i>
+          </a>
+        </li>
+        <li class="navbar-full-item" id="nav-item-ava">
+          <div class="nav-link" id="nav-item-ava-link">
+            <style>
+              #nav-item-ava {
+                background-image: url(/assets/imgs/user_default_ava.png);
+              }
+            </style>
+            <ul id="user_option_list">
+              <li class="user_option-item">
+                <a href="/user/profile.html">Profile</a>
+              </li>
+              <li class="user_option-item">
+                <a href="/index.html">Log out</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- CAROSUEL -->
+  <section id="caroseul">
+    <div id="caroseul-container">
+      <ul id="caroseul-list">
+        <li class="caroseul-items">
+          <img src="https://bigthink.com/wp-content/uploads/2023/02/AdobeStock_558949687.jpg" alt=""
+            class="caroseul-image">
+        </li>
+        <li class="caroseul-items">
+          <img src="https://www.rheagroup.com/wp-content/uploads/2022/04/international-day-of-human-space-flight.jpg"
+            alt="" class="caroseul-image">
+        </li>
+        <li class="caroseul-items">
+          <img
+            src="https://assets.iflscience.com/assets/articleNo/59739/aImg/35943/1621265502-astronaut-floating-freely-in-space-fer-gregory-shutterstock-com-o.webp"
+            alt="" class="caroseul-image">
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main id="main">
+    <section id="shop_list-section">
+      <ul id="shop_list"></ul>
+    </section>
+  </main>
+  <!-- PAGINATION -->
+  <nav id="pagination-container">
+    <ul id="page-list">
+      <li class="page-item">
+        <a class="page-link" href="/user/shop.html">Previous</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="/user/shop.html">1</a>
+      </li>
+      <li class="page-item  active">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Next</a>
+      </li>
+    </ul>
+  </nav>
+  <!-- Back to Top -->
+  <button onclick="topFunction()" id="myBtn" title="Go to top"><strong>^</strong></button>
+  <!-- Shop -->
+  <a href="/purchase.html">
+    <div class="floating-icon" id="shop_button"></div>
+  </a>
+
+  <!-- Refresh -->
+  <div class="floating-icon" id="refresh_button"></div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-options">
+      <div class="footer-items">
+        <img src="/assets/imgs/Icon.png" alt="">
+        <h3>Astronomy X</h3>
+      </div>
+      <div class="footer-items">
+        <h5>NAVIGATION</h5>
+        <ul>
+          <div>
+            <li>
+              <a href="/user/home_user.html">Home</a>
+            </li>
+            <li>
+              <a href="/user/satellites.html">Satellites</a>
+            </li>
+            <li>
+              <a href="/user/planets.html">Planets</a>
+            </li>
+            <li>
+              <a href="#">Shop</a>
+            </li>
+            <li>
+              <a href="/procedure.html">Procedure</a>
+            </li>
+        </ul>
+      </div>
+      <div class="footer-items">
+        <h5>LEGAL</h5>
+        <ul>
+          <div>
+            <li>
+              <a href="#">About Us</a>
+            </li>
+            <li>
+              <a href="#">Privacy</a>
+            </li>
+            <li>
+              <a href="#">Term of use</a>
+            </li>
+            <li>
+              <a href="#">Support</a>
+            </li>
+            <li>
+              <a href="#">Contact us</a>
+            </li>
+        </ul>
+      </div>
+      <div class="footer-items">
+        <form id="myForm">
+          <h5>Subscribe to receive the earliest updates</h5>
+          <p>Stay informed with our latest news, offers, and updates.</p>
+          <input type="text" id="user_email_input" placeholder="Email address">
+          <input type="submit" value="Subscribe" id="user_email_submit">
+        </form>
+      </div>
+    </div>
+    <div class="footer-options">
+      <div class="footer-copyrights">
+        <p>© 2023 Draz. All rights reserved.</p>
+        <p>Copyright of <a href="https://uiverse.io/">Uiverse.io</a></p>
+        <p>Supporters: Mr Nguyen Quang Nam, Mr Nguyen Quoc Dat,<a href="https://stackoverflow.com/">
+            Stack Overflow</a></p>
+        <p>Influenced by: <a href="https://www.nasa.gov/">NASA</a>, <a href="https://www.spacex.com/">SpaceX</a>, <a
+            href="https://www.space.com/">Space</a> </p>
+      </div>
+      <ul class="footer-copyrights">
+        <li>
+          <a href="https://www.facebook.com/draz.principe">
+            <i class="bi bi-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/draz.principe/">
+            <i class="bi bi-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://discord.gg/nFGY7yVr">
+            <i class="bi bi-discord"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/DrazPham">
+            <i class="bi bi-github"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+  <script>
+    //UPDATE PRODUCTS
+const products_price = document.getElementsByClassName("products_price");
+const products_link = document.getElementsByClassName("products_link");
+const products_name = document.getElementsByClassName("products_name");
+const products_details = document.getElementsByClassName("products_details");
+const products_image = document.getElementsByClassName("products_image");
+const shop_list = document.getElementById("shop_list");
+
+let count = 0;
+let jsonContainer = [];
+
+const fetchAPI = async () => {
+    const responsive = await fetch("/assets/json/shop.json")
+    let data = await responsive.json();
+    for (let i = 9; i < 18; i++) {
+        let product = document.createElement("li");
+        product.classList.add("products-item");
+        product.innerHTML =
+            `
+        <img
+            src="${data[i].image_url}"
+        alt="starship torch image" class="products_image"/>
+        <div class = "card-body">
+            <h5>${data[i].product_name}</h5>
+            <p class = "product-detail">${data[i].details}</p>
+            <div id= "option_section">
+            <a>
+                <div class="button" data-tooltip="${data[i].price}">
+                    <div class="button-wrapper">
+                        <div class="text">Add To Cart</div>
+                        <span class="icon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="bi bi-cart2"
+                                viewBox="0 0 16 16"
+                            >
+                            <path
+                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+                            ></path>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </a>
+                <label class="ui-bookmark">
+                    <input type="checkbox">
+                    <div class="bookmark">
+                        <svg viewBox="0 0 32 32">
+                            <g>
+                                <path d="M27 4v27a1 1 0 0 1-1.625.781L16 24.281l-9.375 7.5A1 1 0 0 1 5 31V4a4 4 0 0 1 4-4h14a4 4 0 0 1 4 4z"></path>
+                            </g>
+                        </svg>
+                    </div>
+                </label>
+            </div>
+        </div>
+        `
+        shop_list.appendChild(product);
+    }
+    var products = await document.getElementsByClassName("products-item");
+        let body = document.querySelector("#shop_list-section");
+        let product_items = [];
+
+        for (let i = 0; i < 9; i++) {
+            products[i].addEventListener("click", (e) => {
+                let success = document.createElement("div");
+                success.innerHTML = `
+                <div class = "pop-up_container pop-up_container-success">
+                    <i class="bi bi-check-circle-fill" style="color: greenyellow;"></i>
+                    <span>Product added!</span>
+                </div>`
+                body.appendChild(success);
+                setTimeout(function () { success.style.display = "none" }, 4000)
+                product_items.push(i);
+                document.getElementById("shop_button").style.display = product_items.length > 0 ? "block" : "none";
+            }, false);
+        }
+        document.getElementById("refresh_button").addEventListener("click", (e) => {
+            product_items = [];
+            document.getElementById("shop_button").style.display = "none";
+            let restart = document.createElement("div");
+            restart.innerHTML = `
+                <div class="pop-up_container pop-up_container-refresh">
+                    <i class="bi bi-x-circle-fill" style="color: red"></i>
+                    <span>Cart empty!</span>
+                </div>`;
+            body.appendChild(restart);
+            setTimeout(function () { body.removeChild(restart); }, 5000);
+        });
+
+        document.getElementById("shop_button").addEventListener("click", (e) => {
+            localStorage.setItem("user_cart", JSON.stringify(product_items));
+        });
+}
+fetchAPI();
+
+  </script>
+  <script src="/script/default.js"></script>
+  <script src="/script/shop.js"></script>
+</body>
+
+</html>
