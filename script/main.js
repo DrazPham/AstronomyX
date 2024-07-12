@@ -1,3 +1,37 @@
+//IMPORT
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//Firebase
+const logout_btn = document.getElementById("logout_btn");
+const firebaseConfig = {
+    apiKey: "AIzaSyCka1Tb7vtqNqfyieiB7wyE9gEp7wC3NDg",
+    authDomain: "astronomyx-space.firebaseapp.com",
+    projectId: "astronomyx-space",
+    storageBucket: "astronomyx-space.appspot.com",
+    messagingSenderId: "817695494145",
+    appId: "1:817695494145:web:a6a21426574e005392b000"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+console.log(logout_btn);
+logout_btn.addEventListener("click",(e)=>{
+    location.replace("/index.html");
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/auth.user
+            const uid = user.uid;
+            // ...
+        } else {
+            // User is signed out
+            // ...
+        }
+    });
+})
+
 //NEWS API
 
 
@@ -11,18 +45,18 @@
 
 
 //BLOG UPDATING
-const fetchBlog = async ()=>{
-    const responsive =  await fetch(`https://api.spaceflightnewsapi.net/v4/blogs/`);
+const fetchBlog = async () => {
+    const responsive = await fetch(`https://api.spaceflightnewsapi.net/v4/blogs/`);
     let data = await responsive.json();
     let container = document.getElementById("blogs-list");
     let newArr = [];
-    for (let i = 0 ; i< 3 ; i++)
-    newArr.push(data.results[i]);
+    for (let i = 0; i < 3; i++)
+        newArr.push(data.results[i]);
     let blogs_list = document.getElementById("blogs-list");
-    for (i in newArr){
+    for (let i in newArr) {
         let blog = document.createElement("li");
         blog.innerHTML =
-        `
+            `
         <li>
             <a href= ${newArr[i].url}>
                 <img src=${newArr[i].image_url}>
@@ -30,13 +64,13 @@ const fetchBlog = async ()=>{
                         <h6>${newArr[i].title}</h6>
                         <p>${newArr[i].summary}</p>
                         <small>${newArr[i].news_site}</small> -
-                        <small>${newArr[i].published_at.slice(0,10).split("-").reverse().join("/")}</small>
+                        <small>${newArr[i].published_at.slice(0, 10).split("-").reverse().join("/")}</small>
                     <div>
             </a>
         </li>
         <hr>
         `
-    blogs_list.appendChild(blog);
+        blogs_list.appendChild(blog);
     }
 }
 fetchBlog();
@@ -51,22 +85,22 @@ const news_author_list = document.getElementsByClassName("news-author");
 const news_container = document.getElementsByClassName("news-items");
 
 //NEWS UPDATING
-const fetchNews = async() => {
-    const responsive1 =  await fetch(`https://api.spaceflightnewsapi.net/v4/reports/`)
-    const responsive2 =  await fetch(`https://api.spaceflightnewsapi.net/v4/articles/`)
+const fetchNews = async () => {
+    const responsive1 = await fetch(`https://api.spaceflightnewsapi.net/v4/reports/`)
+    const responsive2 = await fetch(`https://api.spaceflightnewsapi.net/v4/articles/`)
     let data1 = await responsive1.json();
     let data2 = await responsive2.json();
     let container = document.getElementById("post-container");
     let newArr = [];
-    for (let i = 0 ; i< 5 ; i++){
-        if (i*2+1>10) break;
+    for (let i = 0; i < 5; i++) {
+        if (i * 2 + 1 > 10) break;
         newArr.push(data1.results[i]);
         newArr.push(data2.results[i]);
     }
-    for (i in newArr){
+    for (let i in newArr) {
         let news = document.createElement("li");
         news.innerHTML =
-        `
+            `
         <li class = "news-items">
             <a href= ${newArr[i].url} class = "news-link">
                 <img src=${newArr[i].image_url} class = "news-image">
@@ -74,7 +108,7 @@ const fetchNews = async() => {
                         <h6 class = "news-title">${newArr[i].title}</h6>
                         <p class = "news-summary">${newArr[i].summary}</p>
                         <small class = "news-author">${newArr[i].news_site}</small> -
-                        <small class = "news-date">${newArr[i].published_at.slice(0,10).split("-").reverse().join("/")}</small>
+                        <small class = "news-date">${newArr[i].published_at.slice(0, 10).split("-").reverse().join("/")}</small>
                     <div>
             </a>
         </li>
@@ -82,24 +116,24 @@ const fetchNews = async() => {
         container.appendChild(news);
     }
 
-    localStorage.setItem("currentPosts",JSON.stringify(newArr));
+    localStorage.setItem("currentPosts", JSON.stringify(newArr));
 }
 fetchNews();
 
 // NEWS SEARCHING
 let searchInput = document.querySelector("#navbar-full-search");
-searchInput.addEventListener("change", ()=>{
-    for (i in news_container){
+searchInput.addEventListener("change", () => {
+    for (i in news_container) {
         news_title_list[i].innerHTML = "";
     }
     let constArr = JSON.parse(localStorage.getItem("currentPosts"));
-    
-    if (searchInput.value !== ""){
-        let filterArr = constArr.filter((e)=> e.title.toLowerCase().indexOf(searchInput.value.toLowerCase()) !==-1 );
-        for (i in filterArr){
+
+    if (searchInput.value !== "") {
+        let filterArr = constArr.filter((e) => e.title.toLowerCase().indexOf(searchInput.value.toLowerCase()) !== -1);
+        for (i in filterArr) {
             news_title_list[i].innerHTML = filterArr[i].title;
             news_summary_list[i].innerHTML = filterArr[i].summary;
-            news_date_list[i].innerHTML = filterArr[i].published_at.slice(0,10).split("-").reverse().join("/")
+            news_date_list[i].innerHTML = filterArr[i].published_at.slice(0, 10).split("-").reverse().join("/")
             news_image_list[i].src = filterArr[i].image_url;
             news_author_list[i].innerHTML = `By ${filterArr[i].news_site}`
             news_link_list[i].href = filterArr[i].url;
@@ -107,27 +141,24 @@ searchInput.addEventListener("change", ()=>{
     }
     else {
         let arrStorage = JSON.parse(localStorage.getItem("currentPosts"));
-        for (let i = 0 ; i< arrStorage.length;i++){
+        for (let i = 0; i < arrStorage.length; i++) {
             news_summary_list[i].innerHTML = arrStorage[i].summary;
-            news_date_list[i].innerHTML = arrStorage[i].published_at.slice(0,10).split("-").reverse().join("/")
+            news_date_list[i].innerHTML = arrStorage[i].published_at.slice(0, 10).split("-").reverse().join("/")
             news_image_list[i].src = arrStorage[i].image_url;
             news_author_list[i].innerHTML = `${arrStorage[i].news_site}`
             news_link_list[i].href = arrStorage[i].url;
             news_title_list[i].innerHTML = arrStorage[i].title;
         }
     }
-    for (let i in news_container){
-        news_title_list[i].textContent === ""  ? news_container[i].style.display = "none" : news_container[i].style.display = "flex";
+    for (let i in news_container) {
+        news_title_list[i].textContent === "" ? news_container[i].style.display = "none" : news_container[i].style.display = "flex";
     }
 })
 
 
-function toggleMessage() {
-    var messageBox = document.getElementById('messageBox');
-    messageBox.style.display = (messageBox.style.display === 'block') ? 'none' : 'block';
-}
 
-document.getElementById("chat_btn").addEventListener("click",(e)=>{
+
+document.getElementById("chat_btn").addEventListener("click", (e) => {
     let chatbox = document.getElementById("messageBox");
     chatbox.style.overflowY = "auto";
     chatbox.style.overflowX = "hidden";
@@ -139,10 +170,10 @@ document.getElementById("chat_btn").addEventListener("click",(e)=>{
     document.getElementById("chat_greeting").style.background = "linear-gradient(to bottom, #8a2be2 0%, #ff69b4 100%)";
     document.getElementById("chat_greeting").style.color = "white";
     document.getElementById("chat_greeting").style.display = "inline-block";
-    document.getElementById("chat_greeting").style.padding =  "5px 10px";
-    document.getElementById("chat_greeting").style.borderRadius =  "20px";
-    document.getElementById("chat_greeting").style.borderBottomLeftRadius =  "0";
-    
+    document.getElementById("chat_greeting").style.padding = "5px 10px";
+    document.getElementById("chat_greeting").style.borderRadius = "20px";
+    document.getElementById("chat_greeting").style.borderBottomLeftRadius = "0";
+
     let questionsArr = [
         "What are those function involved in this website?",
         "What is the topic of this website?",
@@ -154,7 +185,7 @@ document.getElementById("chat_btn").addEventListener("click",(e)=>{
         "The copyright is reserved to Pham Bui Gia Bao"
     ]
     let chatbox_chat = document.getElementById("chatbox_chat")
-    for (let index = 0 ; index < 3 ; index++){
+    for (let index = 0; index < 3; index++) {
         let i = document.createElement("p");
         i.classList.add("userQuestions")
         i.innerHTML = `${questionsArr[index]}`;
@@ -166,8 +197,8 @@ document.getElementById("chat_btn").addEventListener("click",(e)=>{
         i.style.right = "0";
         // i.style.top = `$rem`;
         i.style.bottom = "0";
-        i.style.padding =  "5px 10px";
-        i.style.borderRadius =  "20px";
+        i.style.padding = "5px 10px";
+        i.style.borderRadius = "20px";
         i.style.borderBottomRightRadius = "0px";
         i.style.float = "right";
         i.style.float = "bottom";
@@ -177,8 +208,8 @@ document.getElementById("chat_btn").addEventListener("click",(e)=>{
     let userQuestions = document.querySelectorAll(".userQuestions");
     // let newArr = [...questionsArr];
     // let inputArr = newArr;
-    for (let i = 0 ; i < 3 ; i++){
-        userQuestions[i].addEventListener("click",(e)=>{
+    for (let i = 0; i < 3; i++) {
+        userQuestions[i].addEventListener("click", (e) => {
             //question
             // newArr = newArr.filter((e)=> e != userQuestions[i]);
             let k = document.createElement("p");
@@ -188,8 +219,8 @@ document.getElementById("chat_btn").addEventListener("click",(e)=>{
             k.style.fontSize = "105%";
             k.style.background = "linear-gradient(to bottom, #8A2BE2 0%, #0000FF 100%)";
             k.style.display = "inline-block";
-            k.style.padding =  "5px 10px";
-            k.style.borderRadius =  "20px";
+            k.style.padding = "5px 10px";
+            k.style.borderRadius = "20px";
             k.style.float = "right";
             k.style.borderBottomRightRadius = "0px";
             k.style.flex = "1";
@@ -205,34 +236,34 @@ document.getElementById("chat_btn").addEventListener("click",(e)=>{
             j.style.color = "white";
             j.style.background = "linear-gradient(to bottom, #8a2be2 0%, #ff69b4 100%)";
             j.style.display = "inline-block";
-            j.style.padding =  "5px 10px";
-            j.style.borderRadius =  "20px";
+            j.style.padding = "5px 10px";
+            j.style.borderRadius = "20px";
             j.style.float = "left";
             j.style.marginTop = "10px";
             // j.style.float = "top";
             // j.style.position = "relative";
-            j.style.borderBottomLeftRadius = "0px";   
+            j.style.borderBottomLeftRadius = "0px";
             chatbox_chat.appendChild(j);
-    // for (test of newArr){
-    //     let o = document.createElement("p");
-    //     o.classList.add("userQuestions")
-    //     o.innerHTML = `${test}`;
-    //     o.style.color = "black";
-    //     o.style.fontSize = "105%";
-    //     o.style.backgroundColor = "blue";
-    //     o.style.display = "inline-block";
-    //     o.style.position = "relative";
-    //     o.style.right = "0";
-    //     // o.style.top = `$rem`;
-    //     o.style.bottom = "0";
-    //     o.style.padding =  "5px 10px";
-    //     o.style.borderRadius =  "20px";
-    //     o.style.borderBottomRightRadius = "0px";
-    //     o.style.float = "right";
-    //     o.style.float = "bottom";
-    //     chatbox_chat.appendChild(o);
-    // }
-})
+            // for (test of newArr){
+            //     let o = document.createElement("p");
+            //     o.classList.add("userQuestions")
+            //     o.innerHTML = `${test}`;
+            //     o.style.color = "black";
+            //     o.style.fontSize = "105%";
+            //     o.style.backgroundColor = "blue";
+            //     o.style.display = "inline-block";
+            //     o.style.position = "relative";
+            //     o.style.right = "0";
+            //     // o.style.top = `$rem`;
+            //     o.style.bottom = "0";
+            //     o.style.padding =  "5px 10px";
+            //     o.style.borderRadius =  "20px";
+            //     o.style.borderBottomRightRadius = "0px";
+            //     o.style.float = "right";
+            //     o.style.float = "bottom";
+            //     chatbox_chat.appendChild(o);
+            // }
+        })
     }
 
 })

@@ -77,23 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 }
 )
-
-{/* <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCka1Tb7vtqNqfyieiB7wyE9gEp7wC3NDg",
-    authDomain: "astronomyx-space.firebaseapp.com",
-    projectId: "astronomyx-space",
-    storageBucket: "astronomyx-space.appspot.com",
-    messagingSenderId: "817695494145",
-    appId: "1:817695494145:web:a6a21426574e005392b000"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script> */}
+function toggleMessage() {
+    var messageBox = document.getElementById('messageBox');
+    messageBox.style.display = (messageBox.style.display === 'block') ? 'none' : 'block';
+}
